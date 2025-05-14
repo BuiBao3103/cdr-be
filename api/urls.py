@@ -1,12 +1,20 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from .views import InternViewSet, TaskViewSet, AbsenceViewSet
-
-router = DefaultRouter()
-router.register(r'interns', InternViewSet)
-router.register(r'tasks', TaskViewSet)
-router.register(r'absences', AbsenceViewSet)
+from django.urls import path
+from .views import (
+    InternListCreateView, InternDetailView,
+    TaskListCreateView, TaskDetailView,
+    AbsenceListCreateView, AbsenceDetailView
+)
 
 urlpatterns = [
-    path('', include(router.urls)),
-] 
+    # Intern URLs
+    path('interns/', InternListCreateView.as_view(), name='intern-list-create'),
+    path('interns/<int:pk>/', InternDetailView.as_view(), name='intern-detail'),
+    
+    # Task URLs
+    path('tasks/', TaskListCreateView.as_view(), name='task-list-create'),
+    path('tasks/<int:pk>/', TaskDetailView.as_view(), name='task-detail'),
+    
+    # Absence URLs
+    path('absences/', AbsenceListCreateView.as_view(), name='absence-list-create'),
+    path('absences/<int:pk>/', AbsenceDetailView.as_view(), name='absence-detail'),
+]
