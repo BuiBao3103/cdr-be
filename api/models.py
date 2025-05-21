@@ -20,9 +20,9 @@ class Intern(models.Model):
 
 class Task(models.Model):
     date = models.DateField()
-    task_id = models.CharField(max_length=10)
+    task_id = models.CharField(max_length=10, null=True, blank=True)
     content = models.CharField(max_length=200)
-    project = models.CharField(max_length=20)
+    project = models.CharField(max_length=20, null=True, blank=True)
     est_time = models.FloatField()
     act_time = models.FloatField(null=True, blank=True)
     status = models.CharField(max_length=255, choices=TaskStatus.choices, default=TaskStatus.TO_DO)
