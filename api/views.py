@@ -28,7 +28,7 @@ class TaskListCreateView(generics.ListCreateAPIView):
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     filterset_class = TaskFilter
     search_fields = ['task_id', 'content', 'project']
-    ordering_fields = ['id', 'date', 'task_id', 'est_time', 'act_time']
+    ordering_fields = ['id', 'date', 'task_id', 'estimate_time', 'actual_time']
     pagination_class = CustomPagination
 
 

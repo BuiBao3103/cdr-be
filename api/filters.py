@@ -10,10 +10,10 @@ class TaskFilter(filters.FilterSet):
     content = filters.CharFilter(field_name='content', lookup_expr='icontains', label='Content')
     project = filters.CharFilter(field_name='project', lookup_expr='icontains', label='Project')
     status = filters.ChoiceFilter(choices=TaskStatus.choices, label='Status')
-    est_time_min = filters.NumberFilter(field_name='est_time', lookup_expr='gte', label='Min Estimated Time')
-    est_time_max = filters.NumberFilter(field_name='est_time', lookup_expr='lte', label='Max Estimated Time')
-    act_time_min = filters.NumberFilter(field_name='act_time', lookup_expr='gte', label='Min Actual Time')
-    act_time_max = filters.NumberFilter(field_name='act_time', lookup_expr='lte', label='Max Actual Time')
+    estimate_time_min = filters.NumberFilter(field_name='estimate_time', lookup_expr='gte', label='Min Estimated Time')
+    estimate_time_max = filters.NumberFilter(field_name='estimate_time', lookup_expr='lte', label='Max Estimated Time')
+    actual_time_min = filters.NumberFilter(field_name='actual_time', lookup_expr='gte', label='Min Actual Time')
+    actual_time_max = filters.NumberFilter(field_name='actual_time', lookup_expr='lte', label='Max Actual Time')
 
     class Meta:
         model = Task
@@ -25,8 +25,8 @@ class TaskFilter(filters.FilterSet):
             'date': ['exact', 'gte', 'lte'],
             'task_id': ['exact', 'icontains'],
             'content': ['exact', 'icontains'],
-            'est_time': ['exact', 'gte', 'lte'],
-            'act_time': ['exact', 'gte', 'lte'],
+            'estimate_time': ['exact', 'gte', 'lte'],
+            'actual_time': ['exact', 'gte', 'lte'],
         }
 
 class AbsenceFilter(filters.FilterSet):
