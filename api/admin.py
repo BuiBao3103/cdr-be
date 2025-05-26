@@ -9,9 +9,9 @@ class InternAdmin(admin.ModelAdmin):
 
 @admin.register(Task)
 class TaskAdmin(admin.ModelAdmin):
-    list_display = ('id', 'date', 'task_id', 'content', 'project', 'estimate_time', 'actual_time', 'status', 'intern')
+    list_display = ('id', 'date', 'backlog_id', 'content', 'project', 'estimate_time', 'actual_time', 'status', 'intern')
     list_filter = ('status', 'date', 'project')
-    search_fields = ('task_id', 'content', 'project')
+    search_fields = ('backlog_id', 'content', 'project')
     list_per_page = 10
     date_hierarchy = 'date'
 

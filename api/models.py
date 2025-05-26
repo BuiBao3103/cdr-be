@@ -17,10 +17,13 @@ class Intern(models.Model):
 
     def __str__(self):
         return self.full_name
+    
+    class Meta:
+        db_table = "interns"
 
 class Task(models.Model):
     date = models.DateField()
-    task_id = models.CharField(max_length=10, null=True, blank=True)
+    backlog_id = models.CharField(max_length=10, null=True, blank=True)
     content = models.TextField()
     project = models.CharField(max_length=30, null=True, blank=True)
     estimate_time = models.FloatField()
@@ -29,7 +32,10 @@ class Task(models.Model):
     intern = models.ForeignKey(Intern, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.task_id
+        return self.id
+    
+    class Meta:
+        db_table = "tasks"
 
 class Absence(models.Model):
     date = models.DateField()
@@ -39,3 +45,6 @@ class Absence(models.Model):
 
     def __str__(self):
         return f"{self.intern.full_name} - {self.date}"
+    
+    class Meta:
+        db_table = "absences"

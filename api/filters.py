@@ -6,7 +6,7 @@ class TaskFilter(filters.FilterSet):
     date_to = filters.DateFilter(field_name='date', lookup_expr='lte', label='Date To')
     intern_name = filters.CharFilter(field_name='intern__full_name', lookup_expr='icontains', label='Intern Name')
     intern_id = filters.NumberFilter(field_name='intern__id', label='Intern ID')
-    task_id = filters.CharFilter(field_name='task_id', lookup_expr='icontains', label='Task ID')
+    backlog_id = filters.CharFilter(field_name='backlog_id', lookup_expr='icontains', label='Task ID')
     content = filters.CharFilter(field_name='content', lookup_expr='icontains', label='Content')
     project = filters.CharFilter(field_name='project', lookup_expr='icontains', label='Project')
     status = filters.ChoiceFilter(choices=TaskStatus.choices, label='Status')
@@ -23,7 +23,7 @@ class TaskFilter(filters.FilterSet):
             'intern': ['exact'],
             'intern_id': ['exact'],
             'date': ['exact', 'gte', 'lte'],
-            'task_id': ['exact', 'icontains'],
+            'backlog_id': ['exact', 'icontains'],
             'content': ['exact', 'icontains'],
             'estimate_time': ['exact', 'gte', 'lte'],
             'actual_time': ['exact', 'gte', 'lte'],
